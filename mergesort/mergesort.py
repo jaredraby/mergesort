@@ -3,6 +3,8 @@
 # Reading in an array and sorting it
 
 import math
+import random
+import timeit
 
 def mergesort(array):
     n = len(array)
@@ -18,8 +20,6 @@ def mergesort(array):
         y =  y * 2
 
         array = newArray
-
-    print array
 
 def merge(array, leftIndex, rightIndex, endPoint, newArray):
 
@@ -46,23 +46,23 @@ def setup(high):
     arr1 = [random.randint(0, high) for _ in xrange(high)]
     arr2 = [random.randint(0, high) for _ in xrange(high)]
 
-    def test1():
-        return mergesort(arr1)
+def test1():
+    return mergesort(arr1)
 
-    def test2():
-        return arr2.sort()
+def test2():
+    return arr2.sort()
 
 
 def main():
 
-    for i in [1, 10, 100, 1000, 10000, 100000]:
-        print 'Elements: ', i
+    for i in [1, 10, 100, 1000, 10000, 100000, 1000000]:
+        #print 'Elements: ', i
         setup(i)
         print 'Mergesort: %s' % timeit.timeit(test1, number=1)
         print 'Built in: %s' % timeit.timeit(test2, number=1)
         print ''
 
 if __name__=="__main__":
-    main():
+    main()
         
 
