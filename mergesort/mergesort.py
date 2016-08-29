@@ -7,7 +7,7 @@ import math
 def mergesort(array):
     n = len(array)
     newArray = []
-    
+
     y = 1
     while ( y < n):
         i = 0
@@ -37,11 +37,32 @@ def merge(array, leftIndex, rightIndex, endPoint, newArray):
             j = j + 1
 
         k = k + 1
-    
+
+arr1 = None
+arr2 = None
+def setup(high):
+    global arr1
+    global arr2
+    arr1 = [random.randint(0, high) for _ in xrange(high)]
+    arr2 = [random.randint(0, high) for _ in xrange(high)]
+
+    def test1():
+        return mergesort(arr1)
+
+    def test2():
+        return arr2.sort()
+
+
 def main():
 
-    mergesort([1,8,2,4,5,9,3,6,1,8,7])
-
+    for i in [1, 10, 100, 1000, 10000, 100000]:
+        print 'Elements: ', i
+        setup(i)
+        print 'Mergesort: %s' % timeit.timeit(test1, number=1)
+        print 'Built in: %s' % timeit.timeit(test2, number=1)
+        print ''
 
 if __name__=="__main__":
-    main()
+    main():
+        
+
